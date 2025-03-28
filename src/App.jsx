@@ -7,7 +7,7 @@ import { Project } from "./components/project/Project";
 function App() {
   const [projectsState, setProjectState] = useState({
     currentSelectedProject: null,
-    projects: [],
+    projects: []
   });
 
   function handleSelectProject(id) {
