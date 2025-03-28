@@ -2,13 +2,12 @@ import { use, useRef } from "react";
 import { Button } from "../base/Button";
 import { Tasks } from "../tasks/Tasks";
 
-export function Project({ project, onDelete, onTaskAdd }) {
+export function Project({ project, onDelete, onTaskAdd, deleteTask }) {
   let date = new Date(project.dueDate).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
-  const newTask = useRef();
 
   return (
     <div className="w-full md:w-4/5 px-10">
@@ -28,7 +27,7 @@ export function Project({ project, onDelete, onTaskAdd }) {
 
       <p className="text-gray-600 mb-4 mt-6">{project.description}</p>
       <hr className="my-4 border-t-orange-600" />
-      <Tasks project={project} />
+      <Tasks project={project}  setNewTask ={onTaskAdd} deleteTask={deleteTask}/>
     </div>
   );
 }

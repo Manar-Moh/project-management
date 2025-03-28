@@ -19,6 +19,7 @@ export function NewTask({ project ,onNewTask }) {
         }
         const newTask = {
             id: crypto.randomUUID(),
+            projectId: project.id,
             name: taskName,
             completed: false,
         };

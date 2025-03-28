@@ -5,7 +5,7 @@ import { Button } from "../base/Button";
 export function ProjectsSidebar({ handleSelectProject, projects }) {
   
   return (
-    <aside className="w-1/5 bg-gray-800 h-screen p-4">
+    <aside className="w-1/5 bg-gray-800 max-h h-screen p-4">
       <Button onClick={() => handleSelectProject("new")} className={"bg-orange-600 hover:bg-orange-800"}>
         <BsPlusCircle className="inline-block " />
         <span className="px-2">New Project</span>

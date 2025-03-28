@@ -47,6 +47,36 @@ function App() {
     }));
   }
 
+  function onTaskAdd(newTask) {
+    const updatedProjects = projectsState.projects.map((project) => {
+      if (project.id === newTask.projectId) {
+        return { ...project, tasks: [...project.tasks, newTask] };
+      }
+      return project;
+    });
+
+    setProjectState((prev) => ({
+      ...prev,
+      projects: updatedProjects,
+    }));
+  }
+
+  function deleteTask(taskId, projectId) {
+    setProjectState((prev) => ({
+      ...prev,
+      projects: prev.projects.map((project) => {
+        if (project.id === projectId) {
+          return {
+            ...project,
+            tasks: project.tasks.filter((task) => task.id !== taskId),
+          };
+        }
+        return project;
+      }),
+    }));
+      
+  }
+
   return (
     <main className="flex">
       <ProjectsSidebar
@@ -61,6 +91,8 @@ function App() {
             (project) => project.id === projectsState.currentSelectedProject
           )}
           onDelete={handleDeleteProject}
+          onTaskAdd={onTaskAdd}
+          deleteTask={deleteTask}
         />
       ) : (
         <NoProjects />
