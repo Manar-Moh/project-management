@@ -1,7 +1,8 @@
 import { ProjectsSidebar } from "./components/sidebar/ProjectsSidebar";
 import { NewProject } from "./components/NewProject";
 import { NoProjects } from "./components/NoProjects";
-import {useState } from "react";
+import { useState } from "react";
+import { Project } from "./components/Project";
 
 function App() {
   const [projectsState, setProjectState] = useState({
@@ -9,25 +10,28 @@ function App() {
     projects: [],
   });
 
-  function handleSelectProject(project) {
+  function handleSelectProject(id) {
     setProjectState((prev) => ({
       ...prev,
-      currentSelectedProject: project,
+      currentSelectedProject: id,
     }));
   }
 
   function handleAddProject(project) {
-    project.id = projectsState.projects.length + 1;
+    project.id = Math.random();
+
     setProjectState((prev) => ({
       ...prev,
       projects: [...prev.projects, project],
     }));
+
+    handleSelectProject(project.id);
   }
 
   function handleReset() {
     setProjectState((prev) => ({
       ...prev,
-      currentSelectedProject: null,
+      currentSelectedProject: projectsState.projects.length > 0 ? projectsState.projects[0].id : null,
     }));
   }
 
@@ -35,12 +39,15 @@ function App() {
     <main className="flex">
       <ProjectsSidebar
         handleSelectProject={handleSelectProject}
-        projects={projectsState.projects}
+        projects={projectsState}
       />
-      {projectsState.currentSelectedProject != null ? (
-        <NewProject 
-        onReset={handleReset} 
-        onSubmitHandle={handleAddProject}
+      {projectsState.currentSelectedProject == "new" ? (
+        <NewProject onReset={handleReset} onSubmitHandle={handleAddProject} />
+      ) : (projectsState.projects.length > 0 && projectsState.currentSelectedProject != null )? (
+        <Project
+          project={projectsState.projects.find(
+            (project) => project.id === projectsState.currentSelectedProject
+          )}
         />
       ) : (
         <NoProjects />

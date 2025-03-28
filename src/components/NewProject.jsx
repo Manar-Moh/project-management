@@ -9,6 +9,11 @@ export function NewProject({ onReset, onSubmitHandle }) {
 
   function onSubmit(event) {
     event.preventDefault();
+    if(!pName.current.value || !pDescription.current.value || !pDueDate.current.value) {
+      alert("Please fill all fields");
+      return;
+    }
+    
     let project = {
       name: pName.current.value,
       description: pDescription.current.value,
@@ -19,14 +24,13 @@ export function NewProject({ onReset, onSubmitHandle }) {
     pName.current.value = "";
     pDescription.current.value = "";
     pDueDate.current.value = "";
-    onReset();
   }
   return (
     <div className="w-full md:w-4/5 px-10">
       <form className="mt-20">
-        <Input label="Project Name" ref={pName} />
-        <Input label="Description" isTextArea={true} ref={pDescription} />
-        <Input label="Due Date" type="date" ref={pDueDate} />
+        <Input label="Project Name" ref={pName}  />
+        <Input label="Description" isTextArea={true} ref={pDescription}  />
+        <Input label="Due Date" type="date" ref={pDueDate}  />
         <menu className="mt-4">
           <Button
             type="submit"
