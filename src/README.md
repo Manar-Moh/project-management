@@ -2,6 +2,9 @@
 
 This project is a simple React-based application for managing projects and tasks. It allows users to create projects and manage tasks within each project, including adding and deleting tasks.
 
+![demo](/public/demo.gif)
+
+
 ## Features
 
 - **Project Creation**: Create new projects to organize your tasks.
