@@ -1,4 +1,4 @@
-import emptyImg from "../assets/no-projects.png";
+import emptyImg from "../../assets/no-projects.png";
 export function NoProjects() {
   return (
     <div className="w-full md:w-4/5 px-10 ">

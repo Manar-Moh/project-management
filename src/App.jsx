@@ -1,8 +1,8 @@
 import { ProjectsSidebar } from "./components/sidebar/ProjectsSidebar";
-import { NewProject } from "./components/NewProject";
-import { NoProjects } from "./components/NoProjects";
+import { NewProject } from "./components/project/NewProject";
+import { NoProjects } from "./components/project/NoProjects";
 import { useState } from "react";
-import { Project } from "./components/Project";
+import { Project } from "./components/project/Project";
 
 function App() {
   const [projectsState, setProjectState] = useState({

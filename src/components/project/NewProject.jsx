@@ -1,8 +1,7 @@
-import { Button } from "./Button";
-import { Input } from "./Input";
+import { Button } from "../base/Button";
+import { Input } from "../base/Input";
 import { useRef } from "react";
-import { Modal } from "./Modal";
-
+import { Modal } from "../base/Modal";
 export function NewProject({ onReset, onSubmitHandle }) {
   const pName = useRef();
   const pDescription = useRef();

@@ -1,6 +1,6 @@
 import { BsPlusCircle } from "react-icons/bs";
 import { ProjectLink } from "./ProjectLink";
-import { Button } from "../Button";
+import { Button } from "../base/Button";
 
 export function ProjectsSidebar({ handleSelectProject, projects }) {
   
