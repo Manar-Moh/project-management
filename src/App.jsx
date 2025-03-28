@@ -19,6 +19,7 @@ function App() {
 
   function handleAddProject(project) {
     project.id = Math.random();
+    project.tasks = [];
 
     setProjectState((prev) => ({
       ...prev,
@@ -35,6 +36,17 @@ function App() {
     }));
   }
 
+  function handleDeleteProject(id) {
+    const updatedProjects = projectsState.projects.filter(
+      (project) => project.id !== id
+    );
+    setProjectState((prev) => ({
+      ...prev,
+      projects: updatedProjects,
+      currentSelectedProject: updatedProjects.length > 0 ? updatedProjects[0].id : null,
+    }));
+  }
+
   return (
     <main className="flex">
       <ProjectsSidebar
@@ -48,6 +60,7 @@ function App() {
           project={projectsState.projects.find(
             (project) => project.id === projectsState.currentSelectedProject
           )}
+          onDelete={handleDeleteProject}
         />
       ) : (
         <NoProjects />
