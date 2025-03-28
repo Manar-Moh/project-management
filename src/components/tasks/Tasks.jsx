@@ -22,7 +22,7 @@ export function Tasks({ project, setNewTask, deleteTask }) {
     <>
       {isNewTask && <NewTask project={project} onNewTask={handleOnAddTask} />}
       {project.tasks.length > 0 && (
-        <ul className="list-inside">
+        <ul className="list-inside flex  flex-col-reverse">
           {project.tasks.map((task) => (
             <li
               key={task.id}
